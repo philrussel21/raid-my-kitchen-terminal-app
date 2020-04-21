@@ -1,8 +1,9 @@
 #methods for init.rb
 
-require_relative 'display'
-require_relative 'classes/dish'
+require_relative 'classes/dish_database'
 require_relative 'classes/recipe'
+require_relative 'display'
+
 
 def search_by_meat(meat)
   choices_by_meat = Dish.dish_names_and_meats.filter{|k,v|v == meat}.keys

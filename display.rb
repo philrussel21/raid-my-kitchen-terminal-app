@@ -1,6 +1,5 @@
 ##methods that outputs options and selection for the user
 
-require_relative "classes/dish"
 
 $prompt = TTY::Prompt.new
 
