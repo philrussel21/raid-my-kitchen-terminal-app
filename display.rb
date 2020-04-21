@@ -1,5 +1,5 @@
 ##methods that outputs options and selection for the user
-
+##TODO Cosmetics
 
 $prompt = TTY::Prompt.new
 
@@ -37,3 +37,14 @@ def display_all_meat #*meat
   choice = $prompt.select('What meat?', meat_choices.uniq)
 end
 
+def display_choices(array)
+  choice = $prompt.select('All recipes with given choices:', array)
+end
+
+def display_ing_and_method(choice)
+  ingredients = Object.const_get (choice + '::INGREDIENTS')
+  ingredients.each{|ing| puts ing}
+  $prompt.keypress("Press any key to continue with the recipe steps") ##TO EDIT
+  recipe_steps = Object.const_get (choice + '::METHOD')
+  recipe_steps.length.times{|i|puts "[#{i+1}] #{recipe_steps[i]}";$prompt.keypress("Press any key for the next step")}
+end

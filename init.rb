@@ -28,15 +28,17 @@ app_running = true
         #show options on level 2 option 1
         rmk = display_raid_my_kitchen_options
         if rmk == 1 #search by ingredients
-          # meat = gets.chomp ##should be turned to an object??
-          search_by_meat(display_all_meat)##TODO ##HERE
-          ##go back option
+          search_by_meat(display_all_meat)##Cosmetics
+          ##TODO go back or quit option
         elsif rmk == 2 #search by cooking time
+          print "Please provide cooking time desired: "
+          ##TODO Error here if given time is not in the data base
           cooking_time = gets.chomp.to_i
-          display_by_cooking_time(cooking_time) ##TODO
+          search_by_cooking_time(cooking_time) ##TODO
         end
       when 2
         #show options on level 2 option 2
+        #const_set for setting a new class?
         recipe = display_recipe_options
       else
         return #Exit Message #TODO

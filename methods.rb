@@ -5,19 +5,16 @@ require_relative 'classes/recipe'
 require_relative 'display'
 
 
-def search_by_meat(meat)
+def search_by_meat(meat) #TODO Cosmetics
   choices_by_meat = Dish.dish_names_and_meats.filter{|k,v|v == meat}.keys
-  choice = $prompt.select('All recipes with given meat:', choices_by_meat)
-  choice = 'Recipe::' + choice.split.join
-  ingredients = Object.const_get (choice + '::INGREDIENTS')
-  ingredients.each{|ing| puts ing}
-  $prompt.keypress("Press any key to continue with the recipe steps") ##TO EDIT
-  recipe_steps = Object.const_get (choice + '::METHOD')
-  recipe_steps.length.times{|i|puts "[#{i+1}] #{recipe_steps[i]}"}
-  ##TODO press any key to continue
+  choice = 'Recipe::' + display_choices(choices_by_meat).split.join
+  display_ing_and_method(choice)
 end
 
 
-def display_by_cooking_time(cooking_time)
-  #TODO
+def search_by_cooking_time(cooking_time)
+  choices_by_cooktime = Dish.dish_names_and_cook_time.filter{|k,v|(cooking_time..(cooking_time+ 5)).cover?(v)}.keys
+  choice = 'Recipe::' + display_choices(choices_by_cooktime).split.join
+  display_ing_and_method(choice)
 end
+
