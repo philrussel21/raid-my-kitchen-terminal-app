@@ -2,6 +2,8 @@
 ##TODO Cosmetics
 
 $prompt = TTY::Prompt.new
+$default_recipe = Recipe::DefaultRecipe.new
+
 
 def display_options
   #message here
@@ -23,8 +25,8 @@ end
 
 def display_all_meat #*meat
   #TODO #HERE
-  meat_choices = Dish.dish_names_and_meats.values
-  choice = $prompt.select('What meat?', meat_choices.uniq)
+  choice = $prompt.select('What meat?', $default_recipe.recipe_name_and_meats.values.uniq)
+  # default_recipe.recipe_obj_and_meats[choice]
 end
 
 def display_choices(array)
@@ -32,14 +34,12 @@ def display_choices(array)
 end
 
 def display_ing_and_method(choice)
-  ingredients = Object.const_get (choice + '::INGREDIENTS')
   puts ""
-  ingredients.each{|ing| puts ing}
+  $default_recipe.all_recipes[choice].ingredients.each{|ing| puts ing}
   puts ""
   $prompt.keypress("Press any key to continue with the recipe steps") ##TO EDIT
-  recipe_steps = Object.const_get (choice + '::METHOD')
   puts ""
-  recipe_steps.length.times{|i|puts "[#{i+1}] #{recipe_steps[i]}";puts"";$prompt.keypress("Press any key for the next step\n")}
+  $default_recipe.all_recipes[choice].method.length.times{|i|puts "[#{i+1}] #{$default_recipe.all_recipes[choice].method[i]}";puts"";$prompt.keypress("Press any key for the next step\n")}
   puts ""
 end
 
@@ -55,7 +55,6 @@ def display_recipe_options
 end
 
 def display_all_recipes
-  choices = Dish.dish_names
-  choice = 'Recipe::' + display_choices(choices).split.join
-  display_ing_and_method(choice)
+  recipe_selection = display_choices($default_recipe.all_recipes.keys)
+  display_ing_and_method(recipe_selection)
 end

@@ -1,20 +1,20 @@
 #! usr/bin/env ruby
 
 require 'tty-prompt'
-require_relative 'display'
-require_relative "methods"
+require_relative 'methods'
+require_relative "display"
 #keypress for prompt good when showing method in the recipe
 #multiline for prompt good when inputting method
 #yes or no for confirmation
 #suggest from prompt
 
 #initialize database of recipe
-dish1 = ChickenParmigiana.new
-dish2 = BbqChickenSkewers.new
-dish3 = SpaghettiMeatballs.new
-dish4 = TunaPastaSalad.new
-dish5 = SpaghettiBolognese.new
-dish6 = VeganBolognese.new
+$default_recipe.add_dish(ChickenParmigiana.new)
+$default_recipe.add_dish(BbqChickenSkewers.new)
+$default_recipe.add_dish(SpaghettiMeatballs.new)
+$default_recipe.add_dish(TunaPastaSalad.new)
+$default_recipe.add_dish(SpaghettiBolognese.new)
+$default_recipe.add_dish(VeganBolognese.new)
 
 #Welcome message here
 puts "Lorem ipsum"
@@ -45,6 +45,7 @@ app_running = true
           display_all_recipes
         elsif recipe == 2
           ##TODO - Add
+          new_recipe_prompts #returns a hash
         elsif recipe == 3
           ##TODO - Delete
         end
