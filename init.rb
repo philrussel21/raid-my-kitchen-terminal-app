@@ -40,6 +40,14 @@ app_running = true
         #show options on level 2 option 2
         #const_set for setting a new class?
         recipe = display_recipe_options
+        #Show all recipe 1
+        if recipe == 1
+          display_all_recipes
+        elsif recipe == 2
+          ##TODO - Add
+        elsif recipe == 3
+          ##TODO - Delete
+        end
       else
         return #Exit Message #TODO
     end
