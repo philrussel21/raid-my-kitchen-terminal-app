@@ -2,7 +2,7 @@
 
 $prompt = TTY::Prompt.new
 
-def show_options
+def display_options
   #message here
   $prompt.select('What would you like to do?') do |menu|
     menu.choice 'Raid my Kitchen!', 1
@@ -11,7 +11,7 @@ def show_options
   end
 end
 
-def show_raid_my_kitchen_options
+def display_raid_my_kitchen_options
   #message here
   $prompt.select("Please select a category:") do |menu|
     menu.choice 'Ingredients', 1
@@ -20,7 +20,7 @@ def show_raid_my_kitchen_options
   end
 end
 
-def show_recipe_options
+def display_recipe_options
   #message here
   $prompt.select("Please select a category:") do |menu|
     menu.choice 'Add a Recipe', 1
@@ -30,4 +30,9 @@ def show_recipe_options
   end
 end
 
-    
+def display_all_meat #*meat
+  #TODO #HERE
+  meat_choices = ['Chicken']
+  choice = $prompt.select('What meat?', meat_choices)
+end
+
