@@ -43,4 +43,12 @@ class SpaghettiMeatballs < Dish
   end
 end
 
+class TunaPastaSalad < Dish
+
+  def initialize
+    super('Tuna Pasta Salad', "Tuna", 20)
+  end
+end
+
+
 # class 

@@ -9,7 +9,7 @@ def search_by_meat(meat)
   choice = $prompt.select('All recipes with given meat:', choices_by_meat)
   choice = 'Recipe::' + choice.split.join
   ingredients = Object.const_get (choice + '::INGREDIENTS')
-  ingredients.each{|k,v| puts "#{v} #{k}"}
+  ingredients.each{|ing| puts ing}
   $prompt.keypress("Press any key to continue with the recipe steps") ##TO EDIT
   recipe_steps = Object.const_get (choice + '::METHOD')
   recipe_steps.length.times{|i|puts "[#{i+1}] #{recipe_steps[i]}"}

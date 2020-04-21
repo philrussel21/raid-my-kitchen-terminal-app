@@ -12,6 +12,7 @@ require_relative "methods"
 dish1 = ChickenParmigiana.new
 dish2 = BbqChickenSkewers.new
 dish3 = SpaghettiMeatballs.new
+dish4 = TunaPastaSalad.new
 
 #Welcome message here
 puts "Lorem ipsum"
