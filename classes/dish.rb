@@ -1,16 +1,15 @@
 ##TODO
 
 class Dish
-  attr_accessor :name, :meat, :ingredients, :prep_and_cook_time
+  attr_accessor :name, :meat, :prep_and_cook_time
   # @@dish_names = Array.new for showing recipes
   @@dish_names_and_meats = Hash.new(0)
-  def initialize(name,meat,ingredients,prep_and_cook_time)
+  def initialize(name,meat,prep_and_cook_time)
     @name = name
     # @@dishes << @name for showing recipe
     @meat = meat
     @@dish_names_and_meats[@name] = @meat
     #throw error if already in the database
-    @ingredients = ingredients
     @prep_and_cook_time = prep_and_cook_time
   end
 
@@ -26,12 +25,16 @@ end
 class ChickenParmigiana < Dish
 
   def initialize
-    super('Chicken Parmigiana', "Chicken", {
-      'Chicken Schnitzel'=> 1.0,
-      'Parmigiana Sauce'=> 1.0,
-      'Shredded Cheese'=> 1.0
-    }, 25)
+    super('Chicken Parmigiana', "Chicken", 25)
   end
 end
+
+class BbqChickenSkewers
+
+  def initialize
+    super('BBQ Chicken Skewers', "Chicken", 20)
+  end
+end
+
 
 # class 
