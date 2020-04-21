@@ -29,12 +29,18 @@ class ChickenParmigiana < Dish
   end
 end
 
-class BbqChickenSkewers
+class BbqChickenSkewers < Dish
 
   def initialize
-    super('BBQ Chicken Skewers', "Chicken", 20)
+    super('Bbq Chicken Skewers', "Chicken", 20)
   end
 end
 
+class SpaghettiMeatballs < Dish
+
+  def initialize
+    super('Spaghetti Meatballs', "Pork", 15)
+  end
+end
 
 # class 

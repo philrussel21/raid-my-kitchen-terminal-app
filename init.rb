@@ -10,6 +10,8 @@ require_relative "methods"
 
 #initialize database of recipe
 dish1 = ChickenParmigiana.new
+dish2 = BbqChickenSkewers.new
+dish3 = SpaghettiMeatballs.new
 
 #Welcome message here
 puts "Lorem ipsum"

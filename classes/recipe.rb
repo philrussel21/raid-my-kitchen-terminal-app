@@ -30,6 +30,21 @@ bake for a further 10 minutes, or until cheese is golden.",
       '(Optional) Prepare side. (Salad, Rice, chips)'
     ]
   end
+
+  class SpaghettiMeatballs
+    INGREDIENTS = {
+      'g Pork Meatballs' => 400,
+      'tub Napoli Sauce' => 450,
+      'g Spaghettini pasta no. 3' => 250,
+    }
+    METHOD = [
+      'Heat oild in a medium fry pan over hight heat. Add meatballs and cook, stirring occasionally, for 6-7 minutes or until well browned.',
+      'Reduce heat to low, stir through the napoli sauce and cook for 2 minutes or until heated through.',
+      'In a large saucepan, cook pasta as per packet instructions. Drain, then return to the saucepan and toss through meatballs and sauce.',
+      '(Optional) Prepare side. (Salad, Rice, Chips)'
+    ]
+  end
+  
 end
 
 #get multiline input then split to store as an array
