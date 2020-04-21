@@ -50,5 +50,16 @@ class TunaPastaSalad < Dish
   end
 end
 
+class SpaghettiBolognese < Dish
 
-# class 
+  def initialize
+    super("Spaghetti Bolognese", "Beef", 20)
+  end
+end
+
+class VeganBolognese < Dish
+
+  def initialize
+    super("Vegan Bolognese", "Vegan", 15)
+  end
+end

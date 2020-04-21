@@ -16,7 +16,7 @@ end
 def display_raid_my_kitchen_options
   #message here
   $prompt.select("Please select a category:") do |menu|
-    menu.choice 'Ingredients', 1
+    menu.choice 'Key Ingredient', 1
     menu.choice 'Cooking Time', 2
     menu.choice 'Previous page', 0
   end
