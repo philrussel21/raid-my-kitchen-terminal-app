@@ -25,6 +25,7 @@ app_running = true
         if rmk == 1 #search by ingredients
           # meat = gets.chomp ##should be turned to an object??
           search_by_meat(display_all_meat)##TODO ##HERE
+          ##go back option
         elsif rmk == 2 #search by cooking time
           cooking_time = gets.chomp.to_i
           display_by_cooking_time(cooking_time) ##TODO

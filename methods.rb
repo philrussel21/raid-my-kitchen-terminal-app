@@ -7,8 +7,11 @@ require_relative 'classes/recipe'
 def search_by_meat(meat)
   choices_by_meat = Dish.dish_names_and_meats.filter{|k,v|v == meat}.keys
   choice = $prompt.select('All recipes with given meat:', choices_by_meat)
-  choice = 'Recipe::' + choice.split.join + '::METHOD'
-  recipe_steps = Object.const_get choice
+  choice = 'Recipe::' + choice.split.join
+  ingredients = Object.const_get (choice + '::INGREDIENTS')
+  ingredients.each{|k,v| puts "#{v} #{k}"}
+  $prompt.keypress("Press any key to continue with the recipe steps") ##TO EDIT
+  recipe_steps = Object.const_get (choice + '::METHOD')
   recipe_steps.length.times{|i|puts "[#{i+1}] #{recipe_steps[i]}"}
   ##TODO press any key to continue
 end
