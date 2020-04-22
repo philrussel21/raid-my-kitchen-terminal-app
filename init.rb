@@ -3,6 +3,7 @@
 require 'tty-prompt'
 require 'tty-progressbar'
 require 'pastel'
+require 'tty-box'
 
 require_relative 'methods'
 require_relative "display"

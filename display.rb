@@ -2,12 +2,7 @@
 
 #creates a global variable that has the prompt object from TTY gem
 $prompt = TTY::Prompt.new
-#creates a variables of colors from the pastel gem
-pastel = Pastel.new
-green = pastel.on_green(" ")
-red = pastel.on_red(" ")
-#creates a variable from the progressbar gem
-bar = TTY::ProgressBar.new("|:bar", width:20, incomplete: red, complete: green)
+
 
 #Level 1 Display
 def display_options
@@ -35,6 +30,7 @@ def display_choices(message,array_of_choices)
 end
 
 #Display the ingredients and methods of the selected Recipe to show
+#choice is dish.name
 def display_ing_and_method(choice)
   #creates a variables of colors from the pastel gem
   pastel = Pastel.new
@@ -43,11 +39,28 @@ def display_ing_and_method(choice)
   #creates a variable from the progressbar gem
   bar = TTY::ProgressBar.new("|:bar", width:20, incomplete: red, complete: green)
   puts ""
-  $default_recipe.all_recipes[choice].ingredients.each{|ing| puts ing}
+
+  #creates a box then puts the ingredients of the dish inside the box
+  ### ARGUMENT ERROR IF ONLY 1 INGREDIENT is passed
+  dish_ing = $default_recipe.all_recipes[choice].ingredients.join("\n")
+  box = TTY::Box.frame(style: {
+    fg: :black,
+    bg: :white,
+    border: {
+      fg: :black,
+      bg: :white
+    }
+    }, title: {top_left: "INGREDIENTS", bottom_right: "#{choice}"}) do
+    dish_ing
+  end
+  puts box
+
   puts ""
   $prompt.keypress("Press any key to continue with the recipe steps") ##TO EDIT
   clear
   puts ""
+
+  #creates a bar that tracks the progress of the dish
   shown = Array.new
   bar.iterate($default_recipe.all_recipes[choice].method.length.times) do |i|
     puts ""
