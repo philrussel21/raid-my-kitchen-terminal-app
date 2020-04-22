@@ -1,6 +1,4 @@
 
-
-module Recipe
   class DefaultRecipe
     attr_reader :recipe_name_and_meats, :recipe_name_and_cooktime, :all_recipes
     def initialize
@@ -15,11 +13,5 @@ module Recipe
       @recipe_name_and_cooktime[dish.name] = dish.prep_and_cook_time
     end
   end
-
-
-  class NewDish
-  end
-end
-
 #get multiline input then split to store as an array
 #when adding new recipe

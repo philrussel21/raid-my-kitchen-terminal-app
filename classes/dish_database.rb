@@ -1,7 +1,7 @@
 
 require_relative 'dish'
 
-class ChickenParmigiana < Dish
+class ChickenParmigiana < DishFormat::Dish
   attr_accessor :ingredients, :method
   def initialize
     super('Chicken Parmigiana', "Chicken", 25)
@@ -19,7 +19,7 @@ bake for a further 10 minutes, or until cheese is golden.",
 
 end
 
-class BbqChickenSkewers < Dish
+class BbqChickenSkewers < DishFormat::Dish
   attr_accessor :ingredients, :method
   def initialize
     super('Bbq Chicken Skewers', "Chicken", 20)
@@ -41,7 +41,7 @@ class BbqChickenSkewers < Dish
 end
 
 
-class SpaghettiMeatballs < Dish
+class SpaghettiMeatballs < DishFormat::Dish
   attr_accessor :ingredients, :method
   def initialize
     super('Spaghetti Meatballs', "Pork", 15)
@@ -57,7 +57,7 @@ class SpaghettiMeatballs < Dish
   end
 end
 
-class TunaPastaSalad < Dish
+class TunaPastaSalad < DishFormat::Dish
   attr_accessor :ingredients, :method
   def initialize
     super('Tuna Pasta Salad', "Tuna", 20)
@@ -78,7 +78,7 @@ class TunaPastaSalad < Dish
 end
 
 
-class SpaghettiBolognese < Dish
+class SpaghettiBolognese < DishFormat::Dish
   attr_accessor :ingredients, :method
   def initialize
     super("Spaghetti Bolognese", "Beef", 20)
@@ -98,7 +98,7 @@ class SpaghettiBolognese < Dish
   end
 end
 
-class VeganBolognese < Dish
+class VeganBolognese < DishFormat::Dish
   attr_accessor :ingredients, :method
   def initialize
     super("Vegan Bolognese", "Vegan", 15)
