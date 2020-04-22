@@ -2,6 +2,12 @@
 
 #creates a global variable that has the prompt object from TTY gem
 $prompt = TTY::Prompt.new
+#creates a variables of colors from the pastel gem
+pastel = Pastel.new
+green = pastel.on_green(" ")
+red = pastel.on_red(" ")
+#creates a variable from the progressbar gem
+bar = TTY::ProgressBar.new("|:bar", width:20, incomplete: red, complete: green)
 
 #Level 1 Display
 def display_options
@@ -30,13 +36,31 @@ end
 
 #Display the ingredients and methods of the selected Recipe to show
 def display_ing_and_method(choice)
+  #creates a variables of colors from the pastel gem
+  pastel = Pastel.new
+  green = pastel.on_green(" ")
+  red = pastel.on_red(" ")
+  #creates a variable from the progressbar gem
+  bar = TTY::ProgressBar.new("|:bar", width:20, incomplete: red, complete: green)
   puts ""
   $default_recipe.all_recipes[choice].ingredients.each{|ing| puts ing}
   puts ""
   $prompt.keypress("Press any key to continue with the recipe steps") ##TO EDIT
+  clear
   puts ""
-  $default_recipe.all_recipes[choice].method.length.times{|i|puts "[#{i+1}] #{$default_recipe.all_recipes[choice].method[i]}";puts"";$prompt.keypress("Press any key for the next step\n")}
-  puts ""
+  shown = Array.new
+  bar.iterate($default_recipe.all_recipes[choice].method.length.times) do |i|
+    puts ""
+    puts ""
+    shown.each{|method| puts "[#{shown.index(method) + 1}] #{method}"}
+    puts "[#{i+1}] #{$default_recipe.all_recipes[choice].method[i]}"
+    shown << $default_recipe.all_recipes[choice].method[i]
+    puts""
+    $prompt.keypress("Press any key for the next step\n")
+    clear
+  end
+  # $default_recipe.all_recipes[choice].method.length.times{|i|puts "[#{i+1}] #{$default_recipe.all_recipes[choice].method[i]}";puts"";$prompt.keypress("Press any key for the next step\n")}
+  # puts ""
 end
 
 #Level 2 Option 2 Display

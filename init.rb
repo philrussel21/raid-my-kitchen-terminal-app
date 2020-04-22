@@ -1,6 +1,9 @@
 #! usr/bin/env ruby
 
 require 'tty-prompt'
+require 'tty-progressbar'
+require 'pastel'
+
 require_relative 'methods'
 require_relative "display"
 #keypress for prompt good when showing method in the recipe
@@ -31,6 +34,7 @@ app_running = true
         #show options on level 2 option 2
         level_2_option_2
       else
+        clear
         return #Exit Message #TODO
     end
   end

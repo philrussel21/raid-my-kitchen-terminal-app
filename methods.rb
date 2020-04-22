@@ -64,10 +64,19 @@ end
 
 #method to delete a recipe
 def delete_recipe_prompts
-  choice = display_choices("Please select the recipe you wish to delete :",$default_recipe.all_recipes.keys)
+  choice = display_choices("Please select the recipe you wish to delete :",($default_recipe.all_recipes.keys << 'Previous Page'))
+  return level_2_option_2 if choice == 'Previous Page'
   ##CONFIRMATION
-  $default_recipe.delete_dish(choice)
-  puts "#{choice} recipe has been successfully removed from the database"
+  clear
+  y_or_n = $prompt.yes?("Are you sure you want to delete the #{choice} recipe?")
+  if !y_or_n
+    clear
+    return delete_recipe_prompts
+  else
+    $default_recipe.delete_dish(choice)
+    clear
+    puts "#{choice} recipe has been successfully removed from the database"
+  end
 end
 
 #Shows the Features of Option 1 - Raid my Kitchen!
