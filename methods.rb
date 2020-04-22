@@ -6,15 +6,20 @@ require_relative 'display'
 #shows all the available meat type to the user with the option to select any of them
 #filters the recipes shown to the user according to their meat selection
 def search_by_meat #TODO Cosmetics
-  choice_of_meat = display_choices('What meat would you like?',$default_recipe.recipe_name_and_meats.values.uniq)
-  choices = $default_recipe.recipe_name_and_meats.filter{|k,v|v == choice_of_meat}.keys
-  display_ing_and_method(display_choices("List of Dish that can be made from #{choice_of_meat} meat : ",choices))
+  choice_of_meat = display_choices('What meat would you like?',($default_recipe.recipe_name_and_meats.values.uniq << 'Previous Page'))
+  return level_2_option_1 if choice_of_meat == 'Previous Page'
+  choices = $default_recipe.recipe_name_and_meats.filter{|k,v|v == choice_of_meat}.keys << 'Previous Page'
+  recipe_choice = display_choices("List of Dish that can be made from #{choice_of_meat} meat : ",choices)
+  return search_by_meat if recipe_choice == 'Previous Page'
+  display_ing_and_method(recipe_choice)
 end
 
 #sorts the list of recipe to be shown by the given minutes. Only show dishes that can be made within the given minutes
 def search_by_cooking_time(cooking_time)
-  choices = $default_recipe.recipe_name_and_cooktime.filter{|k,v|v <= cooking_time}.keys ##CATCH ERROR HERE
-  display_ing_and_method(display_choices("List of Dish that can be made in less than #{cooking_time} minutes : ",choices))
+  choices = $default_recipe.recipe_name_and_cooktime.filter{|k,v|v <= cooking_time}.keys << 'Previous Page'##CATCH ERROR HERE
+  recipe_choice = display_choices("List of Dish that can be made in less than #{cooking_time} minutes : ",choices)
+  return level_2_option_1 if recipe_choice == 'Previous Page'
+  display_ing_and_method(recipe_choice)
 end
 
 #method that adds a recipe to the flow of the app
@@ -65,7 +70,7 @@ def delete_recipe_prompts
   puts "#{choice} recipe has been successfully removed from the database"
 end
 
-def level_2_options
+def level_2_option_2
   recipe = display_recipe_options
   if recipe == 1 #Show all recipes
     display_all_recipes
@@ -75,5 +80,19 @@ def level_2_options
   elsif recipe == 3
     ##TODO - Delete
     delete_recipe_prompts
+  end
+end
+
+def level_2_option_1
+  #show options on level 2 option 1
+  rmk = display_raid_my_kitchen_options
+  if rmk == 1 #search by ingredients
+    search_by_meat##Cosmetics
+    ##TODO go back or quit option
+  elsif rmk == 2 #search by cooking time
+    print "Please provide cooking time desired: "
+    ##TODO Error here if given time is not in the data base
+    cooking_time = gets.chomp.to_i
+    search_by_cooking_time(cooking_time) ##TODO
   end
 end

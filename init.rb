@@ -26,20 +26,11 @@ app_running = true
     response = display_options
     case response
       when 1
-        #show options on level 2 option 1
-        rmk = display_raid_my_kitchen_options
-        if rmk == 1 #search by ingredients
-          search_by_meat##Cosmetics
-          ##TODO go back or quit option
-        elsif rmk == 2 #search by cooking time
-          print "Please provide cooking time desired: "
-          ##TODO Error here if given time is not in the data base
-          cooking_time = gets.chomp.to_i
-          search_by_cooking_time(cooking_time) ##TODO
-        end
+        # #show options on level 2 option 1
+        level_2_option_1
       when 2
         #show options on level 2 option 2
-        level_2_options
+        level_2_option_2
       else
         return #Exit Message #TODO
     end
