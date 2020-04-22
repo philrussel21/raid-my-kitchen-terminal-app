@@ -4,9 +4,18 @@
 $prompt = TTY::Prompt.new
 
 
+#Display Intro
+def app_intro
+  puts $banner
+  $prompt.keypress("                              Press any key to start the app")
+  clear
+  end
+
 #Level 1 Display
 def display_options
   #message here
+  clear
+  puts $banner
   $prompt.select('What would you like to do?') do |menu|
     menu.choice 'Raid my Kitchen!', 1
     menu.choice 'Recipes', 2

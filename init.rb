@@ -4,12 +4,25 @@ require 'tty-prompt'
 require 'tty-progressbar'
 require 'pastel'
 require 'tty-box'
+require 'colorize'
 
 require_relative 'methods'
 require_relative "display"
 #keypress for prompt good when showing method in the recipe
 #yes or no for confirmation
 #suggest from prompt
+$banner = "
+  ██████   █████  ██ ██████      ███    ███ ██    ██     ██   ██ ██ ████████  ██████ ██   ██ ███████ ███    ██ ██ 
+  ██   ██ ██   ██ ██ ██   ██     ████  ████  ██  ██      ██  ██  ██    ██    ██      ██   ██ ██      ████   ██ ██ 
+  ██████  ███████ ██ ██   ██     ██ ████ ██   ████       █████   ██    ██    ██      ███████ █████   ██ ██  ██ ██ 
+  ██   ██ ██   ██ ██ ██   ██     ██  ██  ██    ██        ██  ██  ██    ██    ██      ██   ██ ██      ██  ██ ██    
+  ██   ██ ██   ██ ██ ██████      ██      ██    ██        ██   ██ ██    ██     ██████ ██   ██ ███████ ██   ████ ██ 
+                                                                                                                  
+                                                                                                                  
+                                                                                                                  
+                                                                                                                  
+                                                                                                                                                                                                                              
+  ".colorize(:red)
 
 #initialize database of recipe
 $default_recipe = DefaultRecipe.new
@@ -20,8 +33,7 @@ $default_recipe.add_dish(TunaPastaSalad.new)
 $default_recipe.add_dish(SpaghettiBolognese.new)
 $default_recipe.add_dish(VeganBolognese.new)
 
-#Welcome message here
-puts "Lorem ipsum"
+
 def main
 app_running = true
   while app_running do
@@ -44,5 +56,5 @@ end
 
 
 
-
+app_intro
 main

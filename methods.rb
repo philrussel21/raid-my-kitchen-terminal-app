@@ -112,6 +112,8 @@ def level_2_option_2
 end
 
 
+
+
 def clear
   print "\e[2J\e[f"
 end
