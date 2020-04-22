@@ -38,7 +38,6 @@ def new_recipe_prompts
       break
     else
       new_dish_ingredients << dish_ingredient
-      new_dish_ingredients.each{|ing|puts"";puts ing}
     end
   end
   puts "Please provide the instructions to make the dish, press Return(Enter) to proceed to the next step. Type 'end' to finish."
@@ -49,7 +48,6 @@ def new_recipe_prompts
       break
     else
       new_dish_methods << dish_method
-      new_dish_methods.each{|step|puts"";puts step}
     end
   end
 
@@ -58,8 +56,10 @@ def new_recipe_prompts
   new_dish = new_dish_object.new(new_dish_name,new_dish_meat,new_prep_and_cook_time)
   new_dish.ingredients = new_dish_ingredients
   new_dish.method = new_dish_methods
-
   $default_recipe.add_dish(new_dish) #Adds the dish to the local database
+
+  clear
+  puts "#{new_dish_name} Recipe has been added."
 end
 
 #method to delete a recipe
@@ -70,19 +70,7 @@ def delete_recipe_prompts
   puts "#{choice} recipe has been successfully removed from the database"
 end
 
-def level_2_option_2
-  recipe = display_recipe_options
-  if recipe == 1 #Show all recipes
-    display_all_recipes
-  elsif recipe == 2
-    ##TODO - Add - Cosmetics
-    new_recipe_prompts #returns a hash
-  elsif recipe == 3
-    ##TODO - Delete
-    delete_recipe_prompts
-  end
-end
-
+#Shows the Features of Option 1 - Raid my Kitchen!
 def level_2_option_1
   #show options on level 2 option 1
   rmk = display_raid_my_kitchen_options
@@ -95,4 +83,26 @@ def level_2_option_1
     cooking_time = gets.chomp.to_i
     search_by_cooking_time(cooking_time) ##TODO
   end
+end
+
+#Shows the Features of Option 2 - Recipes
+def level_2_option_2
+  recipe = display_recipe_options
+  if recipe == 1 #Show all recipes
+    clear
+    display_all_recipes
+  elsif recipe == 2
+    ##TODO - Add - Cosmetics
+    clear
+    new_recipe_prompts #returns a hash
+  elsif recipe == 3
+    ##TODO - Delete
+    clear
+    delete_recipe_prompts
+  end
+end
+
+
+def clear
+  print "\e[2J\e[f"
 end

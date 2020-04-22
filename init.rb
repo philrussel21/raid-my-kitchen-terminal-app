@@ -4,7 +4,6 @@ require 'tty-prompt'
 require_relative 'methods'
 require_relative "display"
 #keypress for prompt good when showing method in the recipe
-#multiline for prompt good when inputting method
 #yes or no for confirmation
 #suggest from prompt
 
