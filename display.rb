@@ -23,14 +23,13 @@ def display_raid_my_kitchen_options
   end
 end
 
-def display_all_meat #*meat
-  #TODO #HERE
-  choice = $prompt.select('What meat?', $default_recipe.recipe_name_and_meats.values.uniq)
-  # default_recipe.recipe_obj_and_meats[choice]
-end
+# def display_all_meat #*meat
+#   #TODO #HERE
+#   # default_recipe.recipe_obj_and_meats[choice]
+# end
 
-def display_choices(array)
-  choice = $prompt.select('All recipes with given choices:', array)
+def display_choices(message,array)
+  choice = $prompt.select(message, array)
 end
 
 def display_ing_and_method(choice)
@@ -55,6 +54,6 @@ def display_recipe_options
 end
 
 def display_all_recipes
-  recipe_selection = display_choices($default_recipe.all_recipes.keys)
+  recipe_selection = display_choices('Raid my Kitchen! Recipes : ',$default_recipe.all_recipes.keys)
   display_ing_and_method(recipe_selection)
 end

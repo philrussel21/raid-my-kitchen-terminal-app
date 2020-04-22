@@ -28,7 +28,7 @@ app_running = true
         #show options on level 2 option 1
         rmk = display_raid_my_kitchen_options
         if rmk == 1 #search by ingredients
-          search_by_meat(display_all_meat)##Cosmetics
+          search_by_meat##Cosmetics
           ##TODO go back or quit option
         elsif rmk == 2 #search by cooking time
           print "Please provide cooking time desired: "

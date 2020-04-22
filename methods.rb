@@ -4,17 +4,21 @@ require_relative 'classes/dish_database'
 require_relative 'display'
 
 
-def search_by_meat(meat) #TODO Cosmetics
-  choices = $default_recipe.recipe_name_and_meats.filter{|k,v|v == meat}.keys
-  display_ing_and_method(display_choices(choices))
+def search_by_meat #TODO Cosmetics
+  #meat
+  # choice = $prompt.select('What meat?', $default_recipe.recipe_name_and_meats.values.uniq)
+  choice_of_meat = display_choices('What meat would you like?',$default_recipe.recipe_name_and_meats.values.uniq)
+  choices = $default_recipe.recipe_name_and_meats.filter{|k,v|v == choice_of_meat}.keys
+  display_ing_and_method(display_choices("List of Dish that can be made from #{choice_of_meat} meat : ",choices))
 end
 
 
 def search_by_cooking_time(cooking_time)
   choices = $default_recipe.recipe_name_and_cooktime.filter{|k,v|v <= cooking_time}.keys ##CATCH ERROR HERE
-  display_ing_and_method(display_choices(choices))
+  display_ing_and_method(display_choices("List of Dish that can be made in less than #{cooking_time} minutes : ",choices))
 end
 
+#method that adds a recipe to the flow of the app
 def new_recipe_prompts
   print "Please provide the name of the dish: "
   new_dish_name = gets.chomp.capitalize
@@ -54,9 +58,9 @@ def new_recipe_prompts
   $default_recipe.add_dish(new_dish) #Adds the dish to the local database
 end
 
+#method to delete a recipe
 def delete_recipe_prompts
-  puts "Please select the recipe you wish to delete"
-  choice = display_choices($default_recipe.all_recipes.keys)
+  choice = display_choices("Please select the recipe you wish to delete :",$default_recipe.all_recipes.keys)
   ##CONFIRMATION
   $default_recipe.all_recipes.delete(choice)
   puts "#{choice} recipe has been successfully removed from the database"
