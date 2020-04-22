@@ -64,3 +64,16 @@ def delete_recipe_prompts
   $default_recipe.delete_dish(choice)
   puts "#{choice} recipe has been successfully removed from the database"
 end
+
+def level_2_options
+  recipe = display_recipe_options
+  if recipe == 1 #Show all recipes
+    display_all_recipes
+  elsif recipe == 2
+    ##TODO - Add - Cosmetics
+    new_recipe_prompts #returns a hash
+  elsif recipe == 3
+    ##TODO - Delete
+    delete_recipe_prompts
+  end
+end

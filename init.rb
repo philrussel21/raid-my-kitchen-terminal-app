@@ -39,17 +39,7 @@ app_running = true
         end
       when 2
         #show options on level 2 option 2
-        #const_set for setting a new class?
-        recipe = display_recipe_options
-        if recipe == 1 #Show all recipes
-          display_all_recipes
-        elsif recipe == 2
-          ##TODO - Add - Cosmetics
-          new_recipe_prompts #returns a hash
-        elsif recipe == 3
-          ##TODO - Delete
-          delete_recipe_prompts
-        end
+        level_2_options
       else
         return #Exit Message #TODO
     end

@@ -56,7 +56,7 @@ def display_all_recipes
   array_of_choices = $default_recipe.all_recipes.keys << 'Previous Page'
   recipe_selection = display_choices('Raid my Kitchen! Recipes : ',array_of_choices)
   if recipe_selection == 'Previous Page'
-    return
+    level_2_options
   else
     display_ing_and_method(recipe_selection)
   end
