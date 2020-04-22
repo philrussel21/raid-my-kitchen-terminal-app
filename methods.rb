@@ -11,7 +11,7 @@ end
 
 
 def search_by_cooking_time(cooking_time)
-  choices = $default_recipe.recipe_name_and_cooktime.filter{|k,v|(cooking_time..(cooking_time+ 5)).cover?(v)}.keys
+  choices = $default_recipe.recipe_name_and_cooktime.filter{|k,v|v <= cooking_time}.keys ##CATCH ERROR HERE
   display_ing_and_method(display_choices(choices))
 end
 
@@ -44,7 +44,7 @@ def new_recipe_prompts
       new_dish_methods.each{|step|puts"";puts step}
     end
   end
-  
+
   #creates a new object from DishFormat::NewDish from user input
   new_dish_object = 'DishFormat::NewDish'.split('::').inject(Object){|object,clazz|object.const_get clazz}
   new_dish = new_dish_object.new(new_dish_name,new_dish_meat,new_prep_and_cook_time)
@@ -54,3 +54,10 @@ def new_recipe_prompts
   $default_recipe.add_dish(new_dish) #Adds the dish to the local database
 end
 
+def delete_recipe_prompts
+  puts "Please select the recipe you wish to delete"
+  choice = display_choices($default_recipe.all_recipes.keys)
+  ##CONFIRMATION
+  $default_recipe.all_recipes.delete(choice)
+  puts "#{choice} recipe has been successfully removed from the database"
+end

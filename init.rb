@@ -48,6 +48,7 @@ app_running = true
           new_recipe_prompts #returns a hash
         elsif recipe == 3
           ##TODO - Delete - ##HERE
+          delete_recipe_prompts
         end
       else
         return #Exit Message #TODO
