@@ -9,6 +9,7 @@ require_relative "display"
 #suggest from prompt
 
 #initialize database of recipe
+$default_recipe = DefaultRecipe.new
 $default_recipe.add_dish(ChickenParmigiana.new)
 $default_recipe.add_dish(BbqChickenSkewers.new)
 $default_recipe.add_dish(SpaghettiMeatballs.new)
@@ -40,14 +41,13 @@ app_running = true
         #show options on level 2 option 2
         #const_set for setting a new class?
         recipe = display_recipe_options
-        #Show all recipe 1
-        if recipe == 1
+        if recipe == 1 #Show all recipes
           display_all_recipes
         elsif recipe == 2
           ##TODO - Add - Cosmetics
           new_recipe_prompts #returns a hash
         elsif recipe == 3
-          ##TODO - Delete - ##HERE
+          ##TODO - Delete
           delete_recipe_prompts
         end
       else

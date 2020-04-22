@@ -3,16 +3,15 @@
 require_relative 'classes/dish_database'
 require_relative 'display'
 
-
+#shows all the available meat type to the user with the option to select any of them
+#filters the recipes shown to the user according to their meat selection
 def search_by_meat #TODO Cosmetics
-  #meat
-  # choice = $prompt.select('What meat?', $default_recipe.recipe_name_and_meats.values.uniq)
   choice_of_meat = display_choices('What meat would you like?',$default_recipe.recipe_name_and_meats.values.uniq)
   choices = $default_recipe.recipe_name_and_meats.filter{|k,v|v == choice_of_meat}.keys
   display_ing_and_method(display_choices("List of Dish that can be made from #{choice_of_meat} meat : ",choices))
 end
 
-
+#sorts the list of recipe to be shown by the given minutes. Only show dishes that can be made within the given minutes
 def search_by_cooking_time(cooking_time)
   choices = $default_recipe.recipe_name_and_cooktime.filter{|k,v|v <= cooking_time}.keys ##CATCH ERROR HERE
   display_ing_and_method(display_choices("List of Dish that can be made in less than #{cooking_time} minutes : ",choices))
@@ -26,7 +25,7 @@ def new_recipe_prompts
   new_dish_meat = gets.chomp.capitalize
   print "Please provide the approximate prepping and cooking time of the dish in minutes: "
   new_prep_and_cook_time = gets.chomp.to_i
-  puts "Please list the all ingredients, press Return(Enter) to proceed to the next ingredient. Type 'end' to finish typing."
+  puts "Please list the all ingredients, press Return(Enter) to proceed to the next ingredient. Type 'end' to finish."
   new_dish_ingredients = Array.new
   while true do
     dish_ingredient = gets.chomp
@@ -37,7 +36,7 @@ def new_recipe_prompts
       new_dish_ingredients.each{|ing|puts"";puts ing}
     end
   end
-  puts "Please provide the instructions to make the dish, press Return(Enter) to proceed to the next step. Type 'end' to finish typing"
+  puts "Please provide the instructions to make the dish, press Return(Enter) to proceed to the next step. Type 'end' to finish."
   new_dish_methods = Array.new
   while true do
     dish_method = gets.chomp
@@ -62,6 +61,6 @@ end
 def delete_recipe_prompts
   choice = display_choices("Please select the recipe you wish to delete :",$default_recipe.all_recipes.keys)
   ##CONFIRMATION
-  $default_recipe.all_recipes.delete(choice)
+  $default_recipe.delete_dish(choice)
   puts "#{choice} recipe has been successfully removed from the database"
 end

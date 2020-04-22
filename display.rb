@@ -1,10 +1,9 @@
-##methods that outputs options and selection for the user
 ##TODO Cosmetics
 
+#creates a global variable that has the prompt object from TTY gem
 $prompt = TTY::Prompt.new
-$default_recipe = DefaultRecipe.new
 
-
+#Level 1 Display
 def display_options
   #message here
   $prompt.select('What would you like to do?') do |menu|
@@ -14,6 +13,7 @@ def display_options
   end
 end
 
+#Level 2 Option 1 Display
 def display_raid_my_kitchen_options
   #message here
   $prompt.select("Please select a category:") do |menu|
@@ -23,15 +23,12 @@ def display_raid_my_kitchen_options
   end
 end
 
-# def display_all_meat #*meat
-#   #TODO #HERE
-#   # default_recipe.recipe_obj_and_meats[choice]
-# end
-
-def display_choices(message,array)
-  choice = $prompt.select(message, array)
+#Display choices from the given array and the message from the message arg
+def display_choices(message,array_of_choices)
+  choice = $prompt.select(message, array_of_choices)
 end
 
+#Display the ingredients and methods of the selected Recipe to show
 def display_ing_and_method(choice)
   puts ""
   $default_recipe.all_recipes[choice].ingredients.each{|ing| puts ing}
@@ -42,6 +39,7 @@ def display_ing_and_method(choice)
   puts ""
 end
 
+#Level 2 Option 2 Display
 def display_recipe_options
   #message here
   $prompt.select("Please select a category:") do |menu|
@@ -53,7 +51,13 @@ def display_recipe_options
   end
 end
 
+#Displays all the default recipe from the data base
 def display_all_recipes
-  recipe_selection = display_choices('Raid my Kitchen! Recipes : ',$default_recipe.all_recipes.keys)
-  display_ing_and_method(recipe_selection)
+  array_of_choices = $default_recipe.all_recipes.keys << 'Previous Page'
+  recipe_selection = display_choices('Raid my Kitchen! Recipes : ',array_of_choices)
+  if recipe_selection == 'Previous Page'
+    return
+  else
+    display_ing_and_method(recipe_selection)
+  end
 end
