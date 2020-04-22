@@ -44,10 +44,10 @@ app_running = true
         if recipe == 1
           display_all_recipes
         elsif recipe == 2
-          ##TODO - Add
+          ##TODO - Add - Cosmetics
           new_recipe_prompts #returns a hash
         elsif recipe == 3
-          ##TODO - Delete
+          ##TODO - Delete - ##HERE
         end
       else
         return #Exit Message #TODO

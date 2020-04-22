@@ -2,7 +2,7 @@
 ##TODO Cosmetics
 
 $prompt = TTY::Prompt.new
-$default_recipe = Recipe::DefaultRecipe.new
+$default_recipe = DefaultRecipe.new
 
 
 def display_options

@@ -23,37 +23,34 @@ def new_recipe_prompts
   print "Please provide the approximate prepping and cooking time of the dish in minutes: "
   new_prep_and_cook_time = gets.chomp.to_i
   puts "Please list the all ingredients, press Return(Enter) to proceed to the next ingredient. Type 'end' to finish typing."
-  ingredients = Array.new
+  new_dish_ingredients = Array.new
   while true do
-    new_ingredient = gets.chomp
-    if new_ingredient[0..2].downcase == 'end'
+    dish_ingredient = gets.chomp
+    if dish_ingredient[0..2].downcase == 'end'
       break
     else
-      ingredients << new_ingredient
-      ingredients.each{|ing|puts"";puts ing}
+      new_dish_ingredients << dish_ingredient
+      new_dish_ingredients.each{|ing|puts"";puts ing}
     end
   end
-  puts "Please provide the instructions to make the dish, press Return(Enter) to proceed to the next ingredient. Type 'end' to finish typing"
-  methods = Array.new
+  puts "Please provide the instructions to make the dish, press Return(Enter) to proceed to the next step. Type 'end' to finish typing"
+  new_dish_methods = Array.new
   while true do
-    new_method = gets.chomp
-    if new_method[0..2].downcase == 'end'
+    dish_method = gets.chomp
+    if dish_method[0..2].downcase == 'end'
       break
     else
-      methods << new_method
-      methods.each{|step|puts"";puts step}
+      new_dish_methods << dish_method
+      new_dish_methods.each{|step|puts"";puts step}
     end
   end
-  new_dish = Hash.new(0)
-  new_dish["name"] = new_dish_name
-  new_dish["meat"] = new_dish_meat
-  new_dish["prep_and_cook"] = new_prep_and_cook_time
-  new_dish["ingredients"] = ingredients
-  new_dish["methods"] = methods
-  new_dish
+  
+  #creates a new object from DishFormat::NewDish from user input
+  new_dish_object = 'DishFormat::NewDish'.split('::').inject(Object){|object,clazz|object.const_get clazz}
+  new_dish = new_dish_object.new(new_dish_name,new_dish_meat,new_prep_and_cook_time)
+  new_dish.ingredients = new_dish_ingredients
+  new_dish.method = new_dish_methods
+
+  $default_recipe.add_dish(new_dish) #Adds the dish to the local database
 end
 
-# def add_dish(object)
-#   if object.is_a?(Hash)
-#     #do something
-#   else
