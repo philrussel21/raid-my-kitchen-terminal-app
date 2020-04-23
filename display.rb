@@ -49,20 +49,27 @@ def display_ing_and_method(choice)
   bar = TTY::ProgressBar.new("|:bar", width:20, incomplete: red, complete: green)
   puts ""
 
-  #creates a box then puts the ingredients of the dish inside the box
-  ### ARGUMENT ERROR IF ONLY 1 INGREDIENT is passed
-  dish_ing = $default_recipe.all_recipes[choice].ingredients.join("\n")
-  box = TTY::Box.frame(style: {
-    fg: :black,
-    bg: :white,
-    border: {
+  # creates a box then puts the ingredients of the dish inside the box
+  ## ARGUMENT ERROR IF ONLY 1 INGREDIENT is passed
+  dish_ing = $default_recipe.all_recipes[choice].ingredients.map{|ing|ing = "   " + ing + "   "}.join("\n")
+  begin
+    #Potential to throw an error if the characters in the ingredients array is not enough to cover the
+    # box Title and Dish name
+    box = TTY::Box.frame(style: {
       fg: :black,
-      bg: :white
-    }
-    }, title: {top_left: "INGREDIENTS", bottom_right: "#{choice}"}) do
-    dish_ing
+      bg: :white,
+      border: {
+        fg: :black,
+        bg: :white
+      }
+      }, title: {top_left: "INGREDIENTS", bottom_right: "#{choice}"}) do
+      dish_ing
+    end
+    puts box
+  #rescues the ArgumentError from above.
+  rescue ArgumentError
+    $default_recipe.all_recipes[choice].ingredients.each{|ing| puts ing}
   end
-  puts box
 
   puts ""
   $prompt.keypress("Press any key to continue with the recipe steps") ##TO EDIT

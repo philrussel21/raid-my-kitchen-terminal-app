@@ -32,6 +32,7 @@ def new_recipe_prompts
   new_dish_meat = gets.chomp.capitalize
   print "Please provide the approximate prepping and cooking time of the dish in minutes: "
   new_prep_and_cook_time = gets.chomp.to_i
+  raise InvalidCookingTimeError if new_prep_and_cook_time == 0
   puts "Please list the all ingredients, press Return(Enter) to proceed to the next ingredient. Type 'end' to finish."
   new_dish_ingredients = Array.new
   while true do
@@ -42,6 +43,7 @@ def new_recipe_prompts
       new_dish_ingredients << dish_ingredient
     end
   end
+  raise InvalidDishError if new_dish_ingredients.length < 2
   puts "Please provide the instructions to make the dish, press Return(Enter) to proceed to the next step. Type 'end' to finish."
   new_dish_methods = Array.new
   while true do
@@ -52,6 +54,7 @@ def new_recipe_prompts
       new_dish_methods << dish_method
     end
   end
+  raise InvalidDishError if new_dish_methods.length < 2
 
   #creates a new object from DishFormat::NewDish from user input
   new_dish_object = 'DishFormat::NewDish'.split('::').inject(Object){|object,clazz|object.const_get clazz}
@@ -87,7 +90,7 @@ def cook_time_prompts
   ##TODO Error here if given time is not in the data base
   lowest_cook_time = $default_recipe.recipe_name_and_cooktime.values.sort.first
   cooking_time = gets.chomp.to_i
-  raise InvalidCookingTimeError,"Cooking Time should be in minutes and cannot be letters or zero" if cooking_time == 0
+  raise InvalidCookingTimeError if cooking_time == 0
   raise NotInDatabaseError,"Cooking Time provided does not match any dish." if cooking_time < lowest_cook_time
   search_by_cooking_time(cooking_time)
 end
@@ -118,7 +121,13 @@ def level_2_option_2
   elsif recipe == 2
     ##TODO - Add - Cosmetics
     clear
-    new_recipe_prompts #returns a hash
+    begin
+      new_recipe_prompts #returns a hash
+    rescue InvalidCookingTimeError, InvalidDishError => e
+      clear
+      puts e.message.colorize(:red)
+      retry
+    end
   elsif recipe == 3
     ##TODO - Delete
     clear
