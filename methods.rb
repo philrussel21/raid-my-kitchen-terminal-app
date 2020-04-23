@@ -2,6 +2,7 @@
 
 require_relative 'classes/dish_database'
 require_relative 'display'
+require_relative 'classes/errors'
 
 #shows all the available meat type to the user with the option to select any of them
 #filters the recipes shown to the user according to their meat selection
@@ -16,6 +17,7 @@ end
 
 #sorts the list of recipe to be shown by the given minutes. Only show dishes that can be made within the given minutes
 def search_by_cooking_time(cooking_time)
+  clear
   choices = $default_recipe.recipe_name_and_cooktime.filter{|k,v|v <= cooking_time}.keys << 'Previous Page'##CATCH ERROR HERE
   recipe_choice = display_choices("List of Dish that can be made in less than #{cooking_time} minutes : ",choices)
   return level_2_option_1 if recipe_choice == 'Previous Page'
@@ -79,18 +81,31 @@ def delete_recipe_prompts
   end
 end
 
+#method to prompt for sorting from cooking time with exceptions
+def cook_time_prompts
+  print "Please provide cooking time desired: "
+  ##TODO Error here if given time is not in the data base
+  lowest_cook_time = $default_recipe.recipe_name_and_cooktime.values.sort.first
+  cooking_time = gets.chomp.to_i
+  raise InvalidCookingTimeError,"Cooking Time should be in minutes and cannot be letters or zero" if cooking_time == 0
+  raise NotInDatabaseError,"Cooking Time provided does not match any dish." if cooking_time < lowest_cook_time
+  search_by_cooking_time(cooking_time)
+end
+
 #Shows the Features of Option 1 - Raid my Kitchen!
 def level_2_option_1
   #show options on level 2 option 1
   rmk = display_raid_my_kitchen_options
   if rmk == 1 #search by ingredients
     search_by_meat##Cosmetics
-    ##TODO go back or quit option
   elsif rmk == 2 #search by cooking time
-    print "Please provide cooking time desired: "
-    ##TODO Error here if given time is not in the data base
-    cooking_time = gets.chomp.to_i
-    search_by_cooking_time(cooking_time) ##TODO
+    begin
+      cook_time_prompts
+    rescue NotInDatabaseError, InvalidCookingTimeError => e
+      clear
+      puts e.message.colorize(:red)
+      retry
+    end
   end
 end
 

@@ -7,7 +7,7 @@ require 'tty-box'
 require 'colorize'
 
 require_relative 'methods'
-require_relative "display"
+require_relative 'display'
 #keypress for prompt good when showing method in the recipe
 #yes or no for confirmation
 #suggest from prompt
