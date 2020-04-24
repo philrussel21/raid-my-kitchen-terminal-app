@@ -16,6 +16,8 @@ class DefaultRecipe
 
   def delete_dish(dish_name) #dish_name should be the object.name
     @all_recipes.delete(dish_name)
+    @recipe_name_and_meats.delete(dish_name)
+    @recipe_name_and_cooktime.delete(dish_name)
     self
   end
   
