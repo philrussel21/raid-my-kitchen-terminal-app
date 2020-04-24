@@ -23,6 +23,21 @@ def display_options
   end
 end
 
+def serve_hot
+  print "
+  ███████╗███████╗██████╗ ██╗   ██╗███████╗     █████╗ ███╗   ██╗██████╗     ███████╗███╗   ██╗     ██╗ ██████╗ ██╗   ██╗██╗
+  ██╔════╝██╔════╝██╔══██╗██║   ██║██╔════╝    ██╔══██╗████╗  ██║██╔══██╗    ██╔════╝████╗  ██║     ██║██╔═══██╗╚██╗ ██╔╝██║
+  ███████╗█████╗  ██████╔╝██║   ██║█████╗      ███████║██╔██╗ ██║██║  ██║    █████╗  ██╔██╗ ██║     ██║██║   ██║ ╚████╔╝ ██║
+  ╚════██║██╔══╝  ██╔══██╗╚██╗ ██╔╝██╔══╝      ██╔══██║██║╚██╗██║██║  ██║    ██╔══╝  ██║╚██╗██║██   ██║██║   ██║  ╚██╔╝  ╚═╝
+  ███████║███████╗██║  ██║ ╚████╔╝ ███████╗    ██║  ██║██║ ╚████║██████╔╝    ███████╗██║ ╚████║╚█████╔╝╚██████╔╝   ██║   ██╗
+  ╚══════╝╚══════╝╚═╝  ╚═╝  ╚═══╝  ╚══════╝    ╚═╝  ╚═╝╚═╝  ╚═══╝╚═════╝     ╚══════╝╚═╝  ╚═══╝ ╚════╝  ╚═════╝    ╚═╝   ╚═╝
+                                                                                                                            
+  ".colorize(:red)
+puts ""
+$prompt.keypress("                           Press any key to return to Main Menu".colorize(:red))
+end
+
+
 #Level 2 Option 1 Display
 def display_raid_my_kitchen_options
   #message here
@@ -85,11 +100,15 @@ def display_ing_and_method(choice)
     puts "[#{i+1}] #{$default_recipe.all_recipes[choice].method[i]}"
     shown << $default_recipe.all_recipes[choice].method[i]
     puts""
-    $prompt.keypress("Press any key for the next step\n")
+    $prompt.keypress("Press any key for the next step".colorize(:red))
     clear
   end
-  # $default_recipe.all_recipes[choice].method.length.times{|i|puts "[#{i+1}] #{$default_recipe.all_recipes[choice].method[i]}";puts"";$prompt.keypress("Press any key for the next step\n")}
-  # puts ""
+  puts ""
+  puts ""
+  puts choice.colorize(:green)
+  puts ""
+  $default_recipe.all_recipes[choice].method.length.times{|i|puts "[#{i+1}] #{$default_recipe.all_recipes[choice].method[i]}"}
+  serve_hot
 end
 
 #Level 2 Option 2 Display
@@ -114,3 +133,4 @@ def display_all_recipes
     display_ing_and_method(recipe_selection)
   end
 end
+
