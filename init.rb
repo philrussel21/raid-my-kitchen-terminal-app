@@ -34,7 +34,7 @@ $default_recipe.add_dish(SpaghettiBolognese.new)
 $default_recipe.add_dish(VeganBolognese.new)
 
 
-def main
+def raid_my_kitchen
 app_running = true
   while app_running do
     #show the options on level 1
@@ -53,8 +53,17 @@ app_running = true
   end
 end
 
+def main
+  if !ARGF.argv.empty?
+    arg = ARGF.argv.join(' ')
+    display_ing_and_method(arg) if $default_recipe.all_recipes.keys.include?(arg)
+    clear
+    app_intro
+    raid_my_kitchen
+  else
+    app_intro
+    raid_my_kitchen
+  end
+end
 
-
-
-app_intro
 main
