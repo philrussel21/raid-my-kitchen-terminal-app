@@ -64,7 +64,12 @@ def new_recipe_prompts
   $default_recipe.add_dish(new_dish) #Adds the dish to the local database
 
   clear
-  puts "#{new_dish_name} Recipe has been added."
+  puts ""
+  puts ""
+  puts "#{new_dish_name} Recipe has been added.".colorize(:green)
+  puts ""
+  puts ""
+  $prompt.keypress("Press any key to go back to Main Menu.").colorize(:red)
 end
 
 #method to delete a recipe
@@ -80,7 +85,12 @@ def delete_recipe_prompts
   else
     $default_recipe.delete_dish(choice)
     clear
-    puts "#{choice} recipe has been successfully removed from the database"
+    puts ""
+    puts ""
+    puts "#{choice} recipe has been successfully removed from the database".colorize(:yellow)
+    puts ""
+    puts ""
+    $prompt.keypress("Press any key to go back to Main Menu.").colorize(:red)
   end
 end
 

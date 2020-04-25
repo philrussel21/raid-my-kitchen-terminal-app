@@ -115,7 +115,7 @@ end
 def display_recipe_options
   #message here
   $prompt.select("Please select a category:") do |menu|
-    menu.choice 'Show all the Recipes', 1
+    menu.choice 'Show all Recipes', 1
     menu.choice 'Add a Recipe', 2
     #edit a recipe?
     menu.choice 'Delete a Recipe', 3
