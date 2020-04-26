@@ -102,7 +102,16 @@ Link to Trello - https://trello.com/b/DExGGnAu/myterminalapp
 1. [Install Bundler](https://bundler.io/) on your device. Bundler normally comes with the main Ruby installation, if not, please follow the link.
 1. Fork or clone this repository to your local device.
 1. Go to *raid-my-kitchen-terminal-app* directory.
+1. Install the gems required for this app by typing `bundle install` in your CLI.
 1. Run the app with:
     `ruby init.rb` or `ruby init.rb foo bar`
-    *foo bar command line arguments should be replaced with a valid dish name in the database separated by spaces.*
+    * foo bar command line arguments should be replaced with a valid dish name in the database separated by spaces.*
 1. **Enjoy!**
+
+## **Tests** :memo: :pencil:
+
+Feature|Input|Expected Outcome|Actual Outcome|Notes
+-------|-----|----------------|--------------|-----
+
+Raid My Kitchen! - Key Ingredient|N/A|All the Key Ingredients of each Recipe without duplicates| Key Ingredients of each Recipe with duplicates| Add the .uniq array method
+Raid My Kitchen! - Key Ingredient|"Chicken"| Recipes that use "Chicken" as the Key Ingredient| As expected| N\A
