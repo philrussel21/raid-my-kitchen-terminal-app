@@ -108,11 +108,6 @@ Link to Trello - https://trello.com/b/DExGGnAu/myterminalapp
     * foo bar command line arguments should be replaced with a valid dish name in the database separated by spaces.*
 1. **Enjoy!**
 
-## **Tests** :memo: :pencil:
-
-Feature|Input|Expected Outcome|Actual Outcome|Notes
--------|-----|----------------|--------------|-----
-
-Raid My Kitchen! - Key Ingredient | N/A | All the Key Ingredients of each Recipe without duplicates | Key Ingredients of each Recipe with duplicates | Add the .uniq array method
-------------------------------------------------------
-Raid My Kitchen! - Key Ingredient | "Chicken" | Recipes that use "Chicken" as the Key Ingredient | As expected | N\A
+## **Tests** :memo:
+Manual and a [unit testing framework](https://test-unit.github.io/) were used to create and test this app. Each feature was explicitly tested to achieve expected results. The app was consistently tested throughout its production from the big picture (key features) down to its user experience (welcome and exit messsages). The table below shows the summary of manual tests the app has undertaken. For the tests implemented using the **unit-test ruby gem**, please refer to [raid_my_kitchen_test.rb](https://github.com/philrussel21/raid-my-kitchen-terminal-app/blob/master/raid_my_kitchen_test.rb).
+![My Kitchen App! Manual Tests](/docs/manual_tests.png)
