@@ -28,6 +28,8 @@ end
 def new_recipe_prompts
   print "Please provide the name of the dish: "
   new_dish_name = gets.chomp.capitalize
+  new_dish_name = new_dish_name.split(' ').map{|str|str.capitalize}.join(' ') if new_dish_name.include?(' ')
+  raise DuplicateError if $default_recipe.all_recipes.keys.include?(new_dish_name)
   print "Please provide the meat base of the dish: "
   new_dish_meat = gets.chomp.capitalize
   print "Please provide the approximate prepping and cooking time of the dish in minutes: "
@@ -135,8 +137,16 @@ def level_2_option_2
       new_recipe_prompts #returns a hash
     rescue InvalidCookingTimeError, InvalidDishError => e
       clear
+      puts ""
       puts e.message.colorize(:red)
       retry
+    rescue DuplicateError => e
+      clear
+      puts ""
+      puts e.message.colorize(:red)
+      puts ""
+      puts ""
+      $prompt.keypress("Press any key to go back to Main Menu".colorize(:red))
     end
   elsif recipe == 3
     ##TODO - Delete
