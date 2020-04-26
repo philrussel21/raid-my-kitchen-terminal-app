@@ -114,4 +114,5 @@ Feature|Input|Expected Outcome|Actual Outcome|Notes
 -------|-----|----------------|--------------|-----
 
 Raid My Kitchen! - Key Ingredient | N/A | All the Key Ingredients of each Recipe without duplicates | Key Ingredients of each Recipe with duplicates | Add the .uniq array method
+------------------------------------------------------
 Raid My Kitchen! - Key Ingredient | "Chicken" | Recipes that use "Chicken" as the Key Ingredient | As expected | N\A
