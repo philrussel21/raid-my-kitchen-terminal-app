@@ -52,3 +52,10 @@ Its been four days since I started working on this app. The logic of the app is 
 * Added an optional feature to show the Ingredients and Methods of a valid dish given as a command line argument as long the dish is in the database. If no arguments were given or the dish given is invalid, the app would run its normal course.
 * Initial entry to the Software Development Plan
 * Updated add and delete recipe features with confirmation messages.
+
+## **Sunday - 26/04/2020**
+
+* Continued working on the README.md file and the Development Log.md
+* Tried to make init.rb executable but failed to do so, decided to wait until Monday to ask an educator.
+* Adds a exception class to handle duplicate error when adding a new dish.
+* Finalized the Manual Tests Spreadsheet and uploaded to the README.md file.
