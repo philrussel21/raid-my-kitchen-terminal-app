@@ -57,12 +57,13 @@ def main
   if !ARGF.argv.empty?
     arg = ARGF.argv.join(' ')
     display_ing_and_method(arg) if $default_recipe.all_recipes.keys.include?(arg)
+    ARGV.clear
     clear
     app_intro
-    raid_my_kitchen
+    return raid_my_kitchen
   else
     app_intro
-    raid_my_kitchen
+    return raid_my_kitchen
   end
 end
 
