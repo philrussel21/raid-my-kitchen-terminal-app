@@ -96,3 +96,13 @@ Used a **Project Management Platform** - _**Trello**_ to create checklist of tas
 
 Link to Trello - https://trello.com/b/DExGGnAu/myterminalapp
 
+## **Instructions for Installation and Use**
+**This app assumes basic knowledge of the Command Line.**
+1. [Install Ruby](https://www.ruby-lang.org/en/) on your device. (Skip this step if your ruby is already installed and up to date)
+1. [Install Bundler](https://bundler.io/) on your device. Bundler normally comes with the main Ruby installation, if not, please follow the link.
+1. Fork or clone this repository to your local device.
+1. Go to *raid-my-kitchen-terminal-app* directory.
+1. Run the app with:
+    `ruby init.rb` or `ruby init.rb foo bar`
+    *foo bar command line arguments should be replaced with a valid dish name in the database separated by spaces.*
+1. **Enjoy!**
