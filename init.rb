@@ -30,6 +30,11 @@ $default_recipe.add_dish(SpaghettiMeatballs.new)
 $default_recipe.add_dish(TunaPastaSalad.new)
 $default_recipe.add_dish(SpaghettiBolognese.new)
 $default_recipe.add_dish(VeganBolognese.new)
+$default_recipe.add_dish(BeanLentilPastaSalad.new)
+$default_recipe.add_dish(ClamFennelLeekPasta.new)
+$default_recipe.add_dish(BeefVegFriedRice.new)
+
+
 
 
 def raid_my_kitchen
