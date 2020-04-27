@@ -59,3 +59,15 @@ Its been four days since I started working on this app. The logic of the app is 
 * Tried to make init.rb executable but failed to do so, decided to wait until Monday to ask an educator.
 * Adds a exception class to handle duplicate error when adding a new dish.
 * Finalized the Manual Tests Spreadsheet and uploaded to the README.md file.
+
+## **Monday - 27/04/2020**
+
+* Continued working on and finalised README.md file and the Development Log.md
+* Created a shell script to bundle install all gems needed for the app and to run the app the first time for anyone interested on forking or cloning this repo.
+* Addressed the gets() method error when command line arguments are passed.
+* Made sure the app is at 100% before submitting.
+* Proof read README.md and Development Log.md
+
+### **Terminal App Completion**
+
+I feel really confident with the result of this app. I have learned so much more when I was working in this project more than doing bits and pieces to make an afternoon challenge pass. I realized the critical connection of each files and its data structure in a bigger picture, balancing the pros and cons of doing one way or the other and the importance of organising and planning. I have come across a bunch of roadblocks but a simple google search showed a couple of hundred people before me had the same problem and people addressing these problems which is a life saver. Overall, I am proud and very happy with this terminal app project.

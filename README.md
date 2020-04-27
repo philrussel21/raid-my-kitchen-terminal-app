@@ -59,6 +59,7 @@ This feature would let the user remove the recipe from the database. The whole l
 
 The user can directly request for the Ingredients and Methods of a dish provided the recipe is in the database by simply passing the dish name as a command line argument.
 
+![Raid My Kitchen! Command Line Arguments](/docs/rmk_cli_args.png)
 
 ## **User Interaction and Experience** :computer:
 
@@ -66,21 +67,22 @@ The app would normally begin with the app banner and prompts the user to press a
 
 * **Raid My Kitchen! - Key Ingredient**
     - From the Main Menu, proceed to *Raid My Kitchen!* option and choose *Key Ingredient*. This would bring up all the recipe's key ingredient. Make a key ingredient(meat) selection to proceed to the dish's name that has this key ingredient. When a dish's name is chosen, this would list the Ingredients and followed by the Methods to prepare the dish.
+    ![Raid My Kitchen! - Key Ingredient Interface](/docs/rmk_key_ing.png)
 
 * **Raid My Kitchen! - Cooking Time**
     - From the Main Menu, proceed to *Raid My Kitchen* option and choose *Cooking Time*. The app would ask for user input of the desired cooking and prepping time in minutes. **NOTE** If the user provided invalid inputs (ie. letters and zero) and if the input does not match any recipe in the database, this would cause an error and the app would ask again and again until the input is valid. If successful, the app would list all the recipe that can be done within the time frame given. When a dish's name is chosen, this would list the Ingredients and followed by the Methods to prepare the dish.
-
+    ![Raid My Kitchen! - Cooking Time Interface](/docs/rmk_cooking_time.png)
 * **Show All Recipe**
     - From the Main Menu, proceed to *Recipes* option and choose *Show All Recipes*. This would list all the recipe available to the user. When a dish's name is chosen, this would list the Ingredients and followed by the Methods to prepare the dish.
-
+    ![Recipes - Show All Recipes Interface](/docs/recipes_show_all.png)
 * **Add a Recipe**
     - From the Main Menu, proceed to *Recipes* option and choose *Add a Recipe*. The feature would start to prompt for user input. Dish name, meat, prep and cook time, full ingredients and full methods of the dish would be asked. A confirmation message containing the newly added dish would then be displayed to confirm the update of the recipe database. The app will prompt for a keypress to return to Main Menu.
-
+    ![Recipes - Add a Recipe Interface](/docs/add.png)
     **NOTE** The prep and cook time will not accept invalid (ie. letters and zero) inputs. Ingredients and Methods should also be more than one, otherwise the app would take you to the start of the *Add a Recipe* feature.
 
 * **Delete a Recipe**
     - From the Main Menu, proceed to *Recipes* option and choose *Delete a Recipe*. This would list all the available recipe in the database. Once the user makes a selection, a confirmation question would be prompt via a y(yes) or n(no) question. A confirmation message containing the deleted dish would then be displayed to confirm the deletion of the recipe from the database. The app will prompt for a keypress to return to Main Menu.
-
+    ![Recipes - Delete a Recipe Interface](/docs/delete.png)
     **NOTE** The confirmation question would only accept y or n as an answer.
 
 ## **Control Flow Diagram of the App** :framed_picture:
@@ -101,9 +103,11 @@ Link to Trello - https://trello.com/b/DExGGnAu/myterminalapp
 1. [Install Ruby](https://www.ruby-lang.org/en/) on your device. (Skip this step if your ruby is already installed and up to date)
 1. [Install Bundler](https://bundler.io/) on your device. Bundler normally comes with the main Ruby installation, if not, please follow the link.
 1. Fork or clone this repository to your local device.
+    * `git clone git@github.com:philrussel21/raid-my-kitchen-terminal-app.git`
 1. Go to *raid-my-kitchen-terminal-app* directory.
-1. Install the gems required for this app by typing `bundle install` in your CLI.
-1. Run the app with:
+1. Run the script *raid_my_kitchen.sh* to install all gems required and to run the app the first time.
+    * `./raid_my_kitchen.sh`
+* To Run the app again:
     `ruby init.rb` or `ruby init.rb foo bar`
     * foo bar command line arguments should be replaced with a valid dish name in the database separated by spaces.*
 1. **Enjoy!**
@@ -111,3 +115,7 @@ Link to Trello - https://trello.com/b/DExGGnAu/myterminalapp
 ## **Tests** :memo:
 Manual and a [unit testing framework](https://test-unit.github.io/) were used to create and test this app. Each feature was explicitly tested to achieve expected results. The app was consistently tested throughout its production from the big picture (key features) down to its user experience (welcome and exit messsages). The table below shows the summary of manual tests the app has undertaken. For the tests implemented using the **unit-test ruby gem**, please refer to [raid_my_kitchen_test.rb](https://github.com/philrussel21/raid-my-kitchen-terminal-app/blob/master/raid_my_kitchen_test.rb).
 ![My Kitchen App! Manual Tests](/docs/manual_tests.png)
+
+## **Ideas for Future Improvements** :soon:
+
+* App has a feature that accepts inputs of all the ingredients the user has including the measurements then outputs recipes that can be made with these ingredients.
