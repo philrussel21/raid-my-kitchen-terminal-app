@@ -120,3 +120,5 @@ Manual and a [unit testing framework](https://test-unit.github.io/) were used to
 * App has a feature that accepts inputs of all the ingredients the user has including the measurements then outputs recipes that can be made with these ingredients.
 
 * App has a feature that lets the user to edit the recipe.
+
+* App has a feature that lists all the recipes according to serving sizes.
