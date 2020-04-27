@@ -83,7 +83,8 @@ def display_ing_and_method(choice)
     puts box
   #rescues the ArgumentError from above.
   rescue ArgumentError
-    $default_recipe.all_recipes[choice].ingredients.each{|ing| puts ing}
+    puts "INGREDIENTS:"
+    box = $default_recipe.all_recipes[choice].ingredients.each{|ing| puts ing}
   end
 
   puts ""
@@ -106,6 +107,9 @@ def display_ing_and_method(choice)
   puts ""
   puts ""
   puts choice.colorize(:green)
+  puts ""
+  puts box
+  puts ""
   puts ""
   $default_recipe.all_recipes[choice].method.length.times{|i|puts "[#{i+1}] #{$default_recipe.all_recipes[choice].method[i]}"}
   serve_hot
