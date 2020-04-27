@@ -1,6 +1,6 @@
 
 require "test-unit"
-require_relative "init"
+require_relative "../init"
 
 class RaidMyKitchenAppTest < Test::Unit::TestCase
   ##atleast two features to be tested

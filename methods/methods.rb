@@ -1,8 +1,8 @@
 #methods for init.rb
 
-require_relative 'classes/dish_database'
+require_relative '../classes/dish_database'
 require_relative 'display'
-require_relative 'classes/errors'
+require_relative '../classes/errors'
 
 #shows all the available meat type to the user with the option to select any of them
 #filters the recipes shown to the user according to their meat selection
