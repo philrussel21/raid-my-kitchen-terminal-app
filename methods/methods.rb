@@ -15,7 +15,8 @@ def search_by_meat
   display_ing_and_method(recipe_choice)
 end
 
-#sorts the list of recipe to be shown by the given minutes. Only show dishes that can be made within the given minutes
+#sorts the list of recipe to be shown by the given minutes.
+#Only show dishes that can be made within the given minutes.
 def search_by_cooking_time(cooking_time)
   clear
   choices = $default_recipe.recipe_name_and_cooktime.filter{|k,v|v <= cooking_time}.keys << 'Previous Page'##CATCH ERROR HERE
@@ -114,11 +115,11 @@ def level_2_option_1
   #show options on level 2 option 1
   rmk = display_raid_my_kitchen_options
   if rmk == 1 #search by ingredients
-    search_by_meat##Cosmetics
+    search_by_meat
   elsif rmk == 2 #search by cooking time
     begin
       cook_time_prompts
-    rescue NotInDatabaseError, InvalidCookingTimeError => e
+    rescue NotInDatabaseError, InvalidCookingTimeError => e #handles errors
       clear
       puts e.message.colorize(:red)
       retry
@@ -135,7 +136,7 @@ def level_2_option_2
   elsif recipe == 2
     clear
     begin
-      new_recipe_prompts
+      new_recipe_prompts #Add a new recipe
     rescue InvalidCookingTimeError, InvalidDishError => e
       clear
       puts ""
@@ -151,7 +152,7 @@ def level_2_option_2
     end
   elsif recipe == 3
     clear
-    delete_recipe_prompts
+    delete_recipe_prompts #Delete a recipe
   end
 end
 

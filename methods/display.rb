@@ -87,7 +87,7 @@ def display_ing_and_method(choice)
   end
 
   puts ""
-  $prompt.keypress("Press any key to continue with the recipe steps") ##TO EDIT
+  $prompt.keypress("Press any key to continue with the recipe steps")
   clear
   puts ""
 
@@ -113,7 +113,6 @@ end
 
 #Level 2 Option 2 Display
 def display_recipe_options
-  #message here
   $prompt.select("Please select a category:") do |menu|
     menu.choice 'Show all Recipes', 1
     menu.choice 'Add a Recipe', 2
