@@ -6,11 +6,9 @@ require 'pastel'
 require 'tty-box'
 require 'colorize'
 
-require_relative 'methods'
-require_relative 'display'
-#keypress for prompt good when showing method in the recipe
-#yes or no for confirmation
-#suggest from prompt
+require_relative 'methods/methods'
+require_relative 'methods/display'
+
 $banner = "
   ██████   █████  ██ ██████      ███    ███ ██    ██     ██   ██ ██ ████████  ██████ ██   ██ ███████ ███    ██ ██ 
   ██   ██ ██   ██ ██ ██   ██     ████  ████  ██  ██      ██  ██  ██    ██    ██      ██   ██ ██      ████   ██ ██ 
@@ -48,7 +46,7 @@ app_running = true
         level_2_option_2
       else
         clear
-        return #Exit Message #TODO
+        return #Exit the App
     end
   end
 end

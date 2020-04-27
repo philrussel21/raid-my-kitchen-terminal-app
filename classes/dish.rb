@@ -1,4 +1,4 @@
-##TODO
+
 
 require_relative 'recipe'
 module DishFormat
@@ -10,12 +10,6 @@ module DishFormat
       @meat = meat
       @prep_and_cook_time = prep_and_cook_time
     end
-      
-    #throw error if already in the database
-    # @@dishes << @name for showing recipe
-    # def self.dishes for showing recipe
-    #   @@dishes
-    # end
   end
 
   class NewDish < Dish
@@ -28,5 +22,4 @@ module DishFormat
       @method = list_of_methods
     end
   end
-
 end

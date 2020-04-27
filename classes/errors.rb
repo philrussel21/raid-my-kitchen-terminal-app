@@ -1,5 +1,8 @@
 
 class NotInDatabaseError < StandardError
+  def message
+    "Cooking Time provided does not match any dish."
+  end
 end
 
 class InvalidCookingTimeError < StandardError

@@ -6,7 +6,7 @@ require_relative '../classes/errors'
 
 #shows all the available meat type to the user with the option to select any of them
 #filters the recipes shown to the user according to their meat selection
-def search_by_meat #TODO Cosmetics
+def search_by_meat
   choice_of_meat = display_choices('What meat would you like?',($default_recipe.recipe_name_and_meats.values.uniq << 'Previous Page'))
   return level_2_option_1 if choice_of_meat == 'Previous Page'
   choices = $default_recipe.recipe_name_and_meats.filter{|k,v|v == choice_of_meat}.keys << 'Previous Page'
@@ -25,6 +25,7 @@ def search_by_cooking_time(cooking_time)
 end
 
 #method that adds a recipe to the flow of the app
+#returns an Error if invalid input was given
 def new_recipe_prompts
   print "Please provide the name of the dish: "
   new_dish_name = gets.chomp.capitalize
@@ -97,13 +98,14 @@ def delete_recipe_prompts
 end
 
 #method to prompt for sorting from cooking time with exceptions
+#return an error if invalid input was given
 def cook_time_prompts
   print "Please provide cooking time desired: "
   ##TODO Error here if given time is not in the data base
   lowest_cook_time = $default_recipe.recipe_name_and_cooktime.values.sort.first
   cooking_time = gets.chomp.to_i
   raise InvalidCookingTimeError if cooking_time == 0
-  raise NotInDatabaseError,"Cooking Time provided does not match any dish." if cooking_time < lowest_cook_time
+  raise NotInDatabaseError if cooking_time < lowest_cook_time
   search_by_cooking_time(cooking_time)
 end
 
@@ -131,10 +133,9 @@ def level_2_option_2
     clear
     display_all_recipes
   elsif recipe == 2
-    ##TODO - Add - Cosmetics
     clear
     begin
-      new_recipe_prompts #returns a hash
+      new_recipe_prompts
     rescue InvalidCookingTimeError, InvalidDishError => e
       clear
       puts ""
@@ -149,7 +150,6 @@ def level_2_option_2
       $prompt.keypress("Press any key to go back to Main Menu".colorize(:red))
     end
   elsif recipe == 3
-    ##TODO - Delete
     clear
     delete_recipe_prompts
   end
