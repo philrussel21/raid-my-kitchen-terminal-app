@@ -77,12 +77,12 @@ The app would normally begin with the app banner and prompts the user to press a
     ![Recipes - Show All Recipes Interface](/docs/recipes_show_all.png)
 * **Add a Recipe**
     - From the Main Menu, proceed to *Recipes* option and choose *Add a Recipe*. The feature would start to prompt for user input. Dish name, meat, prep and cook time, full ingredients and full methods of the dish would be asked. A confirmation message containing the newly added dish would then be displayed to confirm the update of the recipe database. The app will prompt for a keypress to return to Main Menu.
-    ![Recipes - Add a Recipe Interface](/docs/add.png)
+    ![Recipes - Add a Recipe Interface](/docs/recipes_add.png)
     **NOTE** The prep and cook time will not accept invalid (ie. letters and zero) inputs. Ingredients and Methods should also be more than one, otherwise the app would take you to the start of the *Add a Recipe* feature.
 
 * **Delete a Recipe**
     - From the Main Menu, proceed to *Recipes* option and choose *Delete a Recipe*. This would list all the available recipe in the database. Once the user makes a selection, a confirmation question would be prompt via a y(yes) or n(no) question. A confirmation message containing the deleted dish would then be displayed to confirm the deletion of the recipe from the database. The app will prompt for a keypress to return to Main Menu.
-    ![Recipes - Delete a Recipe Interface](/docs/delete.png)
+    ![Recipes - Delete a Recipe Interface](/docs/recipes_delete.png)
     **NOTE** The confirmation question would only accept y or n as an answer.
 
 ## **Control Flow Diagram of the App** :framed_picture:
@@ -110,7 +110,6 @@ Link to Trello - https://trello.com/b/DExGGnAu/myterminalapp
 * To Run the app again:
     `ruby init.rb` or `ruby init.rb foo bar`
     * foo bar command line arguments should be replaced with a valid dish name in the database separated by spaces.*
-1. **Enjoy!**
 
 ## **Tests** :memo:
 Manual and a [unit testing framework](https://test-unit.github.io/) were used to create and test this app. Each feature was explicitly tested to achieve expected results. The app was consistently tested throughout its production from the big picture (key features) down to its user experience (welcome and exit messsages). The table below shows the summary of manual tests the app has undertaken. For the tests implemented using the **unit-test ruby gem**, please refer to [raid_my_kitchen_test.rb](https://github.com/philrussel21/raid-my-kitchen-terminal-app/blob/master/raid_my_kitchen_test.rb).
